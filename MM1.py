@@ -2,6 +2,7 @@ import random_generator
 import event
 import numpy as np
 import matplotlib.pyplot as plt
+
 class MM1:
     
     def __init__ (self,rho:int,average_len_bit:int,trans_rate:int,sim_time_multiplier:int):
@@ -41,7 +42,7 @@ class MM1:
             #keep a running count of the total time
             time += random_generator.generate(self.lamda)
             #make a new object that is of type 'ARRIVAL' with a packet length of 1/l
-            curr = event.event('ARRIVAL', time,False,random_generator.generate(1/self.lamda))
+            curr = event.event('ARRIVAL', time,False,random_generator.generate(1/self.average_len_bit))
             #dding the current object we just created to our list of arrival objects
             self.arrival_event_array.append(curr)
             
