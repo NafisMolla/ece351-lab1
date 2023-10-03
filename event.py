@@ -1,3 +1,5 @@
+import heapq
+import argparse
 class event:
     
     '''
@@ -6,14 +8,30 @@ class event:
     time -> 
     '''
     # Constructor (initialize instance variables)
-    def __init__(self, event_type: str, time: int, was_dropped: bool = False,packet_len: int =None):
+    def __init__(self, event_type: str, time: int, packet_len: int =None):
         self.event_type = event_type
         self.time = time
-        self.dropped = was_dropped  # only relevant for arrival events
         self.packet_length = packet_len # only relevant for arrival events
+    
+    #this is a function that lets python compare 2 objects of type event
+    def __lt__(self, other):
+        return self.time < other.time
 
 
 
 if __name__ == '__main__':
-    x = event("arrival",20)
-    print(x.time)
+    
+    parser = argparse.ArgumentParser(description='Parses .')
+
+    parser.add_argument('question', type=str, help='The name to greet')
+
+    args = parser.parse_args()
+
+    q = args.question
+    
+    print(q)
+    
+
+
+
+

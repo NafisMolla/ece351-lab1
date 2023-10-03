@@ -1,12 +1,10 @@
 import random_generator
 import event
-import numpy as np
-import matplotlib.pyplot as plt
 
 class MM1:
     
     def __init__ (self,rho:int,average_len_bit:int,trans_rate:int,sim_time_multiplier:int):
-        #rho = l()
+        #rho 
         self.rho:int = rho
         #represents the average length of packets arrived per second
         self.lamda:int = rho*(trans_rate/average_len_bit)
@@ -29,7 +27,7 @@ class MM1:
         
         
         
-        #these variables will be used for the observer
+        #these variables will be used for the observer and also the things we are trying to find
         self.idle = 0
         self.en = 0
         
@@ -42,7 +40,7 @@ class MM1:
             #keep a running count of the total time
             time += random_generator.generate(self.lamda)
             #make a new object that is of type 'ARRIVAL' with a packet length of 1/l
-            curr = event.event('ARRIVAL', time,False,random_generator.generate(1/self.average_len_bit))
+            curr = event.event('ARRIVAL', time,random_generator.generate(1/self.average_len_bit))
             #dding the current object we just created to our list of arrival objects
             self.arrival_event_array.append(curr)
             
@@ -71,6 +69,7 @@ class MM1:
         for arrivals in self.arrival_event_array:
             
             #if the time of the current arrival we are going through is bigger than the current time we want to move the sim time up
+            #if queue is empty we want to service it right away
             if arrivals.time > time:
                 #moveing sim time up
                 time = arrivals.time
@@ -89,26 +88,24 @@ class MM1:
         self.events = self.arrival_event_array + self.departure_event_array + self.observer_event_array
     #observing events, and updating counters
     def observe_sim_events(self) -> None:
-        #this is a sum of the number of packets we observe at each observation event
         '''
         so lets say during our 1st observation we see that theres 10 packets in the queue,
         next obs we see 20 in the queue, and last obs we see 30 packets in the queue
-        
         so the average number of items that was in the queue was -> total_packets/observers
-        
         '''
+        #this is a sum of the number of packets we observe at each observation event
         total_packets = 0
         na=0
         nd=0
         no=0
         local_idle = 0
-        print(len(self.events))
         for e in self.events:
             if e.event_type == 'ARRIVAL':
                 na +=1
             
             elif e.event_type == 'OBSERVER':
                 no+=1
+                # the number of items in the buffer is the number of arrivals - number of departures
                 number_of_packets = na - nd
                 #empty buffer
                 if number_of_packets == 0:
@@ -121,17 +118,18 @@ class MM1:
                     nd += 1
                 
 
-        #populate the en variables 
+        #populate the en and idle variables 
         self.en = total_packets / no
         self.idle = local_idle/no
         
     
-    #sort array
+    #sort array. so we can proccess events in order
     def sort_events(self) -> None:
         #sorting by the time attribute
         self.events.sort(key=lambda event: event.time)
     
     #function to run the sim
+    #basically we just have to call all our functions in here
     def run_sim(self) -> None:
         #generate all the events
         self.generate_arrivals()
@@ -147,8 +145,7 @@ class MM1:
         #run the sim
         self.observe_sim_events()
         
-        
-    
-
+            
+#testing function for our class
 if __name__ == '__main__':
    print("this works gang")
