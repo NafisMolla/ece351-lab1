@@ -1,7 +1,7 @@
-#Router Simulation
+# Router Simulation
  In this simulation we are simulation how packets through a router who has a bounded and unbounded buffer. The packet times are generated using an exponential distribution.
 
-#How to run the Sim
+## How to run the Sim
 
 ### <u>Running all of them at once</u>
 To run all questions at once: run the command 
