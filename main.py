@@ -18,8 +18,10 @@ def q1():
         
     mean = statistics.mean(nums)
     variance = statistics.variance(nums)
-    print("The exponential random variable mean is: ",mean)
-    print("The exponential random variable variance is: ", variance)
+    print("The theoretical exponential random variable mean is: ",1/75)
+    print("The theoretical exponential random variable variance is: ", 1/(75*75))
+    print("The experimental exponential random variable mean is: ",mean)
+    print("The experimental exponential random variable variance is: ", variance)
     
 def q3():
     print("---------------------------------------------")
