@@ -84,7 +84,7 @@ class MM1K(MM1):
         #populate the en variables 
         self.en = total_packets / no
         self.idle = local_idle/no
-        self.missed = local_missed/no
+        self.missed = local_missed/len(self.arrival_event_array)
         
     
     
