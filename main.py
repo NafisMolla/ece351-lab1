@@ -25,7 +25,7 @@ def q3():
     print("---------------------------------------------")
     print("Running Q3")
     
-    rho = [0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95]
+    rho = [0.25,0.35,0.45,0.55,0.65,0.75,0.85]
     avg_packet_data = []
     avg_idle_data = []
     
@@ -147,7 +147,7 @@ def q6():
     
     
     # Graph 6.1
-    plt.title("E[N] vs Rho")
+    plt.title("E[N] vs Rho (6.1)")
     plt.xlabel('Rho Values')
     plt.ylabel('E[N]')
     for i in avg_packets_data:
@@ -158,7 +158,7 @@ def q6():
     plt.close()
     
     # Graph 6.2
-    plt.title("PLoss vs Rho Vals")
+    plt.title("PLoss vs Rho Vals (6.2)")
     plt.xlabel('Rho Value')
     plt.ylabel('Proportional Loss')
     for i in p_loss_data:
