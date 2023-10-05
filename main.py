@@ -20,7 +20,6 @@ def q1():
     variance = statistics.variance(nums)
     print("The exponential random variable mean is: ",mean)
     print("The exponential random variable variance is: ", variance)
-    print("Q1 Done")
     
 def q3():
     print("---------------------------------------------")
@@ -102,20 +101,20 @@ def q4():
         #idle value 
         idle_data.append(sim_obj.idle)
         
-    print(packet_data)
-    print(idle_data)
+    print("E[n]: ",packet_data)
+    print("idle Data: ",idle_data)
     
-    # To generate random data for plotting
-    axisX = rho
-    axisY = packet_data
-    # To create the line graph from above data
-    plt.plot(axisX, axisY)
-    # Adding title and labels for the graph
-    plt.title('Rho vs E[N] (4)')
-    plt.xlabel('rho')
-    plt.ylabel('E[N]')
-    # to show the final graph
-    plt.savefig('images/Question4', bbox_inches='tight')
+    # # To generate random data for plotting
+    # axisX = rho
+    # axisY = packet_data
+    # # To create the line graph from above data
+    # plt.plot(axisX, axisY)
+    # # Adding title and labels for the graph
+    # plt.title('Rho vs E[N] (4)')
+    # plt.xlabel('rho')
+    # plt.ylabel('E[N]')
+    # # to show the final graph
+    # plt.savefig('images/Question4', bbox_inches='tight')
     
     print("---------------------------------------------")
     
@@ -132,6 +131,7 @@ def q6():
     C = 1000000
 
     for k in k_vals:
+        print("curent K value")
         e_n_at_k = []
         loss_at_k = []
         for rho in rho_values:
@@ -141,8 +141,8 @@ def q6():
             e_n_at_k.append(sim_obj.en)
             loss_at_k.append(sim_obj.missed)
         
-        p_loss_data.append(e_n_at_k)
-        avg_packets_data.append(loss_at_k)
+        p_loss_data.append(loss_at_k)
+        avg_packets_data.append(e_n_at_k)
         
     
     

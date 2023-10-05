@@ -14,4 +14,4 @@ q4:
 
 
 q6:
-	python3 main.py q5
+	python3 main.py q6
