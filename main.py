@@ -104,7 +104,7 @@ def q4():
         idle_data.append(sim_obj.idle)
         
     print("E[n]: ",packet_data)
-    print("idle Data: ",idle_data)
+    print("idle Time: ",idle_data)
     
     # # To generate random data for plotting
     # axisX = rho
