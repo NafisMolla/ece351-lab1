@@ -131,7 +131,7 @@ def q6():
     C = 1000000
 
     for k in k_vals:
-        print("curent K value")
+        print("curent K value: ",k) 
         e_n_at_k = []
         loss_at_k = []
         for rho in rho_values:
